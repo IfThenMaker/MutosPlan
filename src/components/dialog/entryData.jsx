@@ -14,8 +14,6 @@ const dateValidate = (dateStr) => {
   const stDate = new Date('1912');
   const endDate = new Date('2040');
   const chDate = new Date(dateStr);
-  console.log(stDate, endDate);
-  console.log(chDate < stDate);
   if (chDate < stDate) {
     alert('1912年～2040年の範囲で入力してください');
   } else if (chDate > endDate) {
@@ -34,9 +32,6 @@ const EntryData = (props) => {
   const [name, setName] = useState();
   const [birth, setBirth] = useState();
   const [open, setOpen] = useState(true);
-
-  console.log('n,b', name, birth);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -49,7 +44,6 @@ const EntryData = (props) => {
       setOpen(false);
     }
   };
-  console.log('cosNameDispatch', birthDateDispatch);
 
 
   return (

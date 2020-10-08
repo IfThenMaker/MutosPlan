@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 const SentenInput = ({ dialog, cosName, birthDate }) => {
   const classes = useStyles();
   const today = new Date();
-  console.log('sentenINp', birthDate);
   return (
     <div>
       <Grid item>
