@@ -85,7 +85,7 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
           size="large"
           variant="contained"
           color="primary"
-          href=""
+          href="http://mutosplan.com/contact/"
         >
           詳しく知りたい
         </Button>
