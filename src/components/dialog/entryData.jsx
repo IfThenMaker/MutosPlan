@@ -57,8 +57,12 @@ const EntryData = (props) => {
           <BirthField dispatch={setBirth} />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            登録
+          <Button
+            disabled={birth === 'fail'}
+            color="primary"
+            onClick={handleClose}
+          >
+            結果を見る
           </Button>
         </DialogActions>
       </Dialog>

@@ -15,22 +15,25 @@ class ExtendedUtils extends DateFnsUtils {
   }
 }
 
-const BirthField = ({ dispatch }) => {
-  const [selectedDate, setSelectedDate] = React.useState(new Date('1950-01-01T00:00:00'));
+const BirthField = ({ defaultValue, dispatch }) => {
+  const [selectedDate, setSelectedDate] = React.useState(defaultValue);
+  // new Date('1950-01-01T00:00:00')
   const handleDateChange = (date) => {
     let std;
-    if (date) {
+    if (!date) {
+      std = 'fail';
+    } else if (date.toString() === 'Invalid Date') {
+      std = 'fail';
+    } else {
       const y = date.getFullYear();
       const m = `00${date.getMonth() + 1}`.slice(-2);
       const d = `00${date.getDate()}`.slice(-2);
       std = `${y}-${m}-${d}`;
-      // console.log('std', std);
-    } else {
-      std = '';
     }
     setSelectedDate(date);
     dispatch(std);
   };
+
   return (
     <MuiPickersUtilsProvider utils={ExtendedUtils} locale={jaLocale}>
       <KeyboardDatePicker
@@ -42,6 +45,7 @@ const BirthField = ({ dispatch }) => {
         label="生年月日"
         value={selectedDate}
         onChange={handleDateChange}
+        helperText="0000-00-00の形で入力してください"
         KeyboardButtonProps={{
           'aria-label': 'change date',
         }}
@@ -50,19 +54,13 @@ const BirthField = ({ dispatch }) => {
   );
 };
 BirthField.defaultProps = {
+  defaultValue: '1940-01-01',
   dispatch: (e) => e,
 };
 BirthField.propTypes = {
+  defaultValue: PropTypes.string,
   dispatch: PropTypes.func,
 };
 
 
 export default BirthField;
-// <TextField
-//   id="date"
-//   label="ç”Ÿå¹´æœˆæ—¥"
-//   type="date"
-//   defaultValue="1940-01-01"
-//   onChange={(e) => dispatch(e.target.value)}
-//   fullWidth
-// />
