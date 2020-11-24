@@ -58,7 +58,7 @@ const EntryData = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            登録
+            結果を見る
           </Button>
         </DialogActions>
       </Dialog>
